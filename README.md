@@ -16,11 +16,13 @@ reader  ──GET the BMP──▶   server   (1-bit BMP, rendered on demand)
 
 ## Install
 
-Install *Month Wallpaper* from the Plugin Store, or copy the `month-wallpaper/`
-folder to `/.crosspoint/plugins/month-wallpaper/` on the SD card.
+Install *Month Wallpaper* from the Plugin Store, or copy this
+folder (`manifest.json`, `device.json`, `plugin.js`) to `/.crosspoint/plugins/monthwallpaper/` on the SD card.
 
-Then create `/.crosspoint/month-wallpaper.json` on the card to describe your
-screen and preferences:
+Then set your screen and preferences in the web UI under **Settings → Month
+Wallpaper**. Opening that card the first time creates
+`/.crosspoint/month-wallpaper.json` with the defaults; Save writes your
+changes. You can also edit the file by hand:
 
 ```json
 {
