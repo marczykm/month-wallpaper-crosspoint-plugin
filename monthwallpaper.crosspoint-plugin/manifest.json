@@ -1,7 +1,14 @@
 {
+  "name": "monthwallpaper",
   "title": "Month Wallpaper",
   "mount": "settings",
   "description": "Download a month-calendar sleep wallpaper from Month Wallpaper server.",
   "author": "marczykm",
-  "version": "1.1.0"
+  "version": "1.2.0",
+  "files": [
+    "manifest.json",
+    "device.json",
+    "plugin.js",
+    "README.md"
+  ]
 }
