@@ -1,9 +1,9 @@
-// Month Wallpaper settings. Edits /.crosspoint/month-wallpaper.json, which the
+// Month Wallpaper settings. Edits config.json in the plugin folder, which the
 // on-device screen (device.json) reads as {cfg.KEY} to build the catalog URL.
-// If the file is missing, it is created with the server's defaults so the
-// on-device screen always has every key to substitute.
+// The plugin ships a default config.json, so no setup is required; if the file
+// is missing it is recreated with the defaults.
 CrossPoint.registerPlugin(async (container, api) => {
-  const CONFIG_PATH = '/.crosspoint/month-wallpaper.json';
+  const CONFIG_PATH = String(api.dir).replace(/\/+$/, '') + '/config.json';
   const DEFAULTS = {
     width: 480,
     height: 800,

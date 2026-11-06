@@ -1,28 +1,27 @@
 # Month Wallpaper
 
-Puts a **month calendar on the reader's sleep screen**. The plugin browses the
-months offered by a hosted rendering server and downloads the one you pick to
-`/sleep/calendar.bmp`.
+Puts a **month calendar on the reader's sleep screen**, refreshed automatically
+every time the reader goes to sleep. Nothing to run or pick manually.
 
-You do **not** need to run anything — the plugin points at a hosted instance at
+You do **not** need to host anything — the plugin uses a hosted instance at
 `https://crosspoint-calendar.marczyk.ovh`. To run your own, change the `url` in
-`device.json` to your server.
+`device.json` to your server (it must serve `GET /current.bmp`).
 
 ```
-reader  ──GET /catalog──▶  server   (list of months + BMP URLs)
-reader  ──GET the BMP──▶   server   (1-bit BMP, rendered on demand)
-        └▶ /sleep/calendar.bmp
+reader ──(on sleep)──GET /current.bmp?...──▶ server   (1-bit BMP, current month)
+       └▶ /sleep/calendar.bmp
 ```
 
 ## Install
 
-Install *Month Wallpaper* from Plugin Hub, or copy this
-folder (`manifest.json`, `device.json`, `plugin.js`) to `/.crosspoint/plugins/monthwallpaper/` on the SD card.
+Install *Month Wallpaper* from Plugin Hub, or copy this folder
+(`manifest.json`, `device.json`, `config.json`, `plugin.js`) to
+`/.crosspoint/plugins/monthwallpaper/` on the SD card. Enable plugins in
+Settings and restart the reader (event subscriptions are built at boot).
 
-Then set your screen and preferences in the web UI under **Settings → Month
-Wallpaper**. Opening that card the first time creates
-`/.crosspoint/month-wallpaper.json` with the defaults; Save writes your
-changes. You can also edit the file by hand:
+The plugin works out of the box with the defaults. To change them, use the web
+UI under **Settings → Month Wallpaper** (Save writes `config.json` in the plugin
+folder), or edit the file by hand:
 
 ```json
 {
@@ -41,20 +40,10 @@ changes. You can also edit the file by hand:
 | `week_start` | `monday` or `sunday`. |
 | `show_adjacent` | `true` to fill leading/trailing cells with the greyed dates of the neighbouring months. |
 
-All keys are optional — anything you leave out uses the server's default
-(480×800, English, no holidays, Monday, adjacent days on).
+## How it works
 
-## Use
-
-On the reader: **Settings → System → Plugins → Month Wallpaper**. It lists the
-months the server offers, the current month first, then a year ahead. Pick one
-and it downloads to `/sleep/calendar.bmp`.
-
-Re-run it at the start of each month. Reusing the fixed filename means each
-download overwrites the previous month's image.
-
-### Showing the calendar on every lock
-
-The reader picks a sleep image at random from `/sleep`. For the calendar to
-show **every** time the screen locks, `calendar.bmp` must be the only file in
-`/sleep` — move or delete any other images there.
+On every sleep the reader downloads the current month to `/sleep/calendar.bmp`.
+The reader picks a sleep image at random from `/sleep`, so for the calendar to
+show every time, `calendar.bmp` must be the only file in `/sleep`.
+It needs WiFi (battery ≥ 20% and a saved network); if the connection fails, the
+previous image is shown. Delivery waits for the next sleep.

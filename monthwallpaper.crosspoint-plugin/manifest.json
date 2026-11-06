@@ -2,12 +2,13 @@
   "name": "monthwallpaper",
   "title": "Month Wallpaper",
   "mount": "settings",
-  "description": "Download a month-calendar sleep wallpaper from Month Wallpaper server.",
+  "description": "Month-calendar sleep wallpaper, refreshed automatically on every sleep. Defaults work out of the box; adjust in the WebUI (Settings > Month Wallpaper).",
   "author": "marczykm",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "files": [
     "manifest.json",
     "device.json",
+    "config.json",
     "plugin.js",
     "README.md"
   ]
