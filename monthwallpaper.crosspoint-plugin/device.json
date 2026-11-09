@@ -5,12 +5,12 @@
   },
   "description": "Refreshes the current month's calendar as the sleep wallpaper every time the reader goes to sleep. Settings (optional): reader WebUI > Settings > Month Wallpaper.",
   "author": "marczykm",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "events": {
     "sleep.enter": {
       "download": {
         "url": "https://crosspoint-calendar.marczyk.ovh/current.bmp?w={cfg.width}&h={cfg.height}&country={cfg.country}&week_start={cfg.week_start}&adjacent={cfg.show_adjacent}",
-        "dest": "/sleep/calendar.bmp"
+        "dest": "/sleep.bmp"
       }
     }
   }

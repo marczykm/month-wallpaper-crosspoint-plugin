@@ -4,7 +4,7 @@
   "mount": "settings",
   "description": "Month-calendar sleep wallpaper, refreshed automatically on every sleep. Defaults work out of the box; adjust in the WebUI (Settings > Month Wallpaper).",
   "author": "marczykm",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "files": [
     "manifest.json",
     "device.json",

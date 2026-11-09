@@ -9,7 +9,7 @@ You do **not** need to host anything — the plugin uses a hosted instance at
 
 ```
 reader ──(on sleep)──GET /current.bmp?...──▶ server   (1-bit BMP, current month)
-       └▶ /sleep/calendar.bmp
+       └▶ /sleep.bmp
 ```
 
 ## Install
@@ -42,8 +42,8 @@ folder), or edit the file by hand:
 
 ## How it works
 
-On every sleep the reader downloads the current month to `/sleep/calendar.bmp`.
-The reader picks a sleep image at random from `/sleep`, so for the calendar to
-show every time, `calendar.bmp` must be the only file in `/sleep`.
+On every sleep the reader downloads the current month to `/sleep.bmp` in the
+root of the SD card. The **CUSTOM** sleep screen mode reads that file first, so
+set the sleep screen to CUSTOM in the reader settings.
 It needs WiFi (battery ≥ 20% and a saved network); if the connection fails, the
 previous image is shown. Delivery waits for the next sleep.
